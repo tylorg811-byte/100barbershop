@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fade District Barbershop</title>
+  <meta name="description" content="Clean cuts, sharp fades, and classic barber services. Book your next appointment with Fade District Barbershop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(13, 13, 13, 0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #c89b3c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: #e5e5e5;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #c89b3c;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #c89b3c;
+      color: #111;
+    }
+
+    .btn-primary:hover {
+      background: #d8aa45;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: #c89b3c;
+      color: #c89b3c;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.72)),
+        url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding: 90px 0;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      color: #d7d7d7;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #c89b3c;
+    }
+
+    .hero p {
+      max-width: 580px;
+      font-size: 1.05rem;
+      color: #d8d8d8;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      color: #bfbfbf;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+
+    .about-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .about-card p {
+      color: #c9c9c9;
+      margin-bottom: 14px;
+    }
+
+    .about-image img {
+      border-radius: 24px;
+      min-height: 420px;
+      object-fit: cover;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 22px;
+      padding: 28px;
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(200,155,60,0.45);
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .service-card p {
+      color: #bebebe;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      color: #c89b3c;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .hours-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .hours-card,
+    .contact-card {
+      background: #151515;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 32px;
+    }
+
+    .hours-card h3,
+    .contact-card h3 {
+      margin-bottom: 20px;
+      font-size: 1.35rem;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: #d5d5d5;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 20px;
+      color: #d5d5d5;
+    }
+
+    .contact-info strong {
+      color: #fff;
+    }
+
+    .cta {
+      padding: 90px 0;
+      background: linear-gradient(135deg, #151515 0%, #101010 100%);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta-box {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+      background: #171717;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 46px 28px;
+    }
+
+    .cta-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      color: #c7c7c7;
+      margin-bottom: 26px;
+    }
+
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: #9d9d9d;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid,
+      .hours-wrapper,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .about-image img {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .about-card,
+      .service-card,
+      .hours-card,
+      .contact-card,
+      .cta-box {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">Fade <span>District</span></a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#hours">Hours</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-outline">Book Now</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">Sharp Cuts. Clean Fades. Real Style.</div>
+        <h1>Your New Go-To <span>Barbershop</span></h1>
+        <p>
+          Premium cuts, fresh fades, and classic service in a clean modern space.
+          Fade District is built for clients who want to look sharp and leave confident.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Book Appointment</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title">About The Shop</h2>
+      <p class="section-subtitle">
+        A modern neighborhood barbershop focused on quality cuts, good energy, and keeping every client looking their best.
+      </p>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Built Around Clean Work & Consistency</h3>
+          <p>
+            At Fade District, every cut is done with attention to detail — from sharp lineups to smooth fades and beard work.
+          </p>
+          <p>
+            Whether you want something classic or a more modern look, we keep the process easy, relaxed, and professional.
+          </p>
+          <p>
+            This sample site is perfect for a barber who needs a simple one-page online presence with contact info, pricing, and booking.
+          </p>
+        </div>
+
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1503951458645-643d53bfd90f?auto=format&fit=crop&w=1200&q=80" alt="Barber cutting a client's hair">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">
+        Simple service options that make it easy for clients to know what you offer and what to expect.
+      </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Classic Cut</h3>
+          <p>A clean, professional haircut with attention to detail and styling.</p>
+          <div class="price">$30</div>
+        </div>
+
+        <div class="service-card">
+          <h3>Fade + Lineup</h3>
+          <p>Sharp fade with crisp edge work for a fresh, polished finish.</p>
+          <div class="price">$40</div>
+        </div>
+
+        <div class="service-card">
+          <h3>Cut + Beard</h3>
+          <p>Full haircut and beard shaping to keep your whole look clean.</p>
+          <div class="price">$50</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hours">
+    <div class="container">
+      <h2 class="section-title">Hours & Info</h2>
+      <p class="section-subtitle">
+        Make it easy for clients to find your hours, location, and how to get in touch.
+      </p>
+
+      <div class="hours-wrapper">
+        <div class="hours-card">
+          <h3>Shop Hours</h3>
+          <div class="hours-list">
+            <div class="hours-row"><span>Monday</span><span>9:00 AM – 6:00 PM</span></div>
+            <div class="hours-row"><span>Tuesday</span><span>9:00 AM – 6:00 PM</span></div>
+            <div class="hours-row"><span>Wednesday</span><span>9:00 AM – 6:00 PM</span></div>
+            <div class="hours-row"><span>Thursday</span><span>9:00 AM – 7:00 PM</span></div>
+            <div class="hours-row"><span>Friday</span><span>9:00 AM – 7:00 PM</span></div>
+            <div class="hours-row"><span>Saturday</span><span>10:00 AM – 4:00 PM</span></div>
+            <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+          </div>
+        </div>
+
+        <div class="contact-card" id="contact">
+          <h3>Contact & Booking</h3>
+          <div class="contact-info">
+            <div><strong>Phone:</strong> (555) 123-4567</div>
+            <div><strong>Email:</strong> hello@fadedistrict.com</div>
+            <div><strong>Location:</strong> 123 Main Street, Tampa, FL</div>
+          </div>
+          <p style="color:#bebebe; margin-bottom: 20px;">
+            Replace this button with a booking link, Fresha link, Booksy link, Square Appointments, or whatever system the barber uses.
+          </p>
+          <a href="#" class="btn btn-primary">Book Your Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Look Sharp. Stay Booked.</h2>
+        <p>
+          This is the kind of simple, affordable landing page you can use as a sample for barber clients who need something clean and professional without a huge budget.
+        </p>
+        <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Fade District Barbershop. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
